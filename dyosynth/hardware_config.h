@@ -23,9 +23,9 @@
 #define GENERIC_SWITCH_4_PIN  9
 #define GENERIC_SWITCH_5_PIN  10
 // Led Encoders
-#define ENCODER_LED_CLK_PIN       4
-#define ENCODER_LED_LATCH_PIN     2
-#define ENCODER_LED_DATA_PIN      5
+#define ENCODER_LED_CLK_PIN   4
+#define ENCODER_LED_LATCH_PIN 2
+#define ENCODER_LED_DATA_PIN  5
 // PWM
 #define PWM_1_PIN             3
 #define PWM_2_PIN             11

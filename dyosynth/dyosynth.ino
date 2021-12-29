@@ -4,6 +4,7 @@
  */
 
 #include "hardware_config.h"
+#include "synth_config.h"
 #include <MIDI.h>
 #include <MozziGuts.h>
 #include <mozzi_midi.h>
@@ -12,8 +13,12 @@
 
 
 void setup() {
-  // put your setup code here, to run once:
-
+  // init LED display interface
+  initDisplayLedInterface();
+  // init MIDI interface
+  initMIDIInterface();
+  // init User Interface, aka Switches (Buttons) and Pots
+  // TODO
 }
 
 void loop() {
