@@ -1,13 +1,21 @@
 #ifndef __SYNTH_CONFIG_H__
 #define __SYNTH_CONFIG_H__
 
+typedef enum {
+  SAW, 
+  SQUARE,
+  SINE,
+  TRIANGLE
+} WAVE_TYPE;
 
 typedef enum {
-  PAGE_LIVE,
-  PAGE_OSCS,
-  PAGE_AMP_ADSR,
-  PAGE_FILTER,
-  PAGE_FILTER_ADSR  
-} SYNTH_PAGE;
+  LPF_24,
+  LPF_12,
+  BPF_12,
+  HPF_12
+} FILTER_TYPE;
+
+#define NUM_OF_WAVE_TYPES 4
+#define NUM_OF_FILTER_TYPES 4
 
 #endif

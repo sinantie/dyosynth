@@ -4,12 +4,17 @@
 //
 // Hardware config
 //
-#define POT_NUMBER    5
-#define BUTTON_NUMBER 5
-#define LED_NUMBER 16
+#define NUM_OF_POTS           5
+#define NUM_OF_BUTTONS        5
+#define LED_NUMBER            16
 
 // Hardware config
-// Pin configuration(double check your schematic before configure those pins)
+#define ADC_RESOLUTION        1024
+#define POT_SENSITIVITY       2
+// minimum _movement_ of pot (1/8 of total ADC range) to get pot unlocked
+#define MIN_POT_CHANGE        ADC_RESOLUTION / 8
+
+// Pin configuration
 // Pots
 #define GENERIC_POT_1_PIN     A0
 #define GENERIC_POT_2_PIN     A1
@@ -17,11 +22,11 @@
 #define GENERIC_POT_4_PIN     A3
 #define GENERIC_POT_5_PIN     A4
 // Buttons
-#define GENERIC_SWITCH_1_PIN  6
-#define GENERIC_SWITCH_2_PIN  7
-#define GENERIC_SWITCH_3_PIN  8
-#define GENERIC_SWITCH_4_PIN  9
-#define GENERIC_SWITCH_5_PIN  10
+#define GENERIC_BUTTON_1_PIN  6
+#define GENERIC_BUTTON_2_PIN  7
+#define GENERIC_BUTTON_3_PIN  8
+#define GENERIC_BUTTON_4_PIN  9
+#define GENERIC_BUTTON_5_PIN  10
 // Led Encoders
 #define ENCODER_LED_CLK_PIN   4
 #define ENCODER_LED_LATCH_PIN 2
