@@ -7,7 +7,7 @@
 class MIDIController {
 
   public:
-    void initMIDIController();
+    MIDIController();
     static void handleNoteOn(byte channel, byte note, byte velocity);
     static void handleNoteOff(byte channel, byte note, byte velocity);
 };

@@ -17,7 +17,7 @@ class DisplayLedInterface {
     void _shiftOut(int dataPin, int clockPin, byte dataOut);
 
   public:    
-    void initDisplayLedInterface();
+    DisplayLedInterface();
     void ledsOff();
     void updateDisplay();
     void flashDisplay();

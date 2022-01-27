@@ -31,7 +31,7 @@ class HardwareInterface {
     uint16_t _analogRead(uint8_t pot_id);
 
   public:
-    void initHardwareInterface();
+    HardwareInterface();
     void lockPotsState(bool lock);
     bool isPressed(uint8_t button_id);
     bool isDoublePressed(uint8_t button1_id, uint8_t button2_id);

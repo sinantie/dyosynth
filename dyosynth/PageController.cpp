@@ -1,5 +1,6 @@
 #include "PageController.h"
 #include "HardwareInterface.h"
+#include "utils.h"
 
 PagePot::PagePot(POT_HARDWARE_INTERFACE pot, IntMap mapper) {
   this->pot = pot;
@@ -36,8 +37,10 @@ Page PageController::getNextPage(Page current_page) {
   uint8_t next_page_pos = current_page.page_pos + 1;
   if(next_page_pos == NUM_OF_PAGES) {
     next_page_pos = 0;
-  }
-  return this->getPage(next_page_pos); 
+  }  
+  Page next_page = this->getPage(next_page_pos);
+  debug("Moving to Page " + String(next_page.name));
+  return next_page; 
 }
 
 Page PageController::getPage(int page_position) {
@@ -49,7 +52,7 @@ void PageController::processPageChanges(Page page, HardwareInterface hardwareInt
     uint16_t value = hardwareInterface.getPotValue(i);
     int mapped_value = (*page.pots[i].mapper)(value);
     page.pots[i].setValueCallback(mapped_value);
-  }
+  }  
 }
 
 void PageController::loadPreset() {

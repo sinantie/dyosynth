@@ -11,4 +11,11 @@ void Preset::loadPreset(int values[]) {
   Preset::setFilterEnvModPercent(values[17]);
 }
 
+String Preset::toString() {
+  String values = "Filter: " + String(Preset::getFilter()) + "\n" +
+                  "Filter cutoff: " + String(Preset::getFilterCutoff()) + "\n" +
+                  "Filter resonance: " + String(Preset::getFilterResonance()) + "\n" +
+                  "Filter env mod percent: " + String(Preset::getFilterEnvModPercent()) + "\n";
+  return values;
+}
 

@@ -7,7 +7,7 @@
 #include "DisplayLedInterface.h"
 #include "HardwareInterface.h"
 
-void DisplayLedInterface::initDisplayLedInterface() {
+DisplayLedInterface::DisplayLedInterface() {
   //define pin modes
   pinMode(ENCODER_LED_LATCH_PIN, OUTPUT);
   pinMode(ENCODER_LED_CLK_PIN, OUTPUT);

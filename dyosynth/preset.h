@@ -41,7 +41,8 @@ class Preset {
   public:    
     Preset();
     void loadPreset(int values[]);
-
+    String toString();
+    
     static void setFilter(FILTER_TYPE value) {filter = value;}
     static FILTER_TYPE getFilter() {return filter;}
     static void setFilterCutoff(uint8_t value) {filter_cutoff = value;}

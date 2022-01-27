@@ -1,6 +1,6 @@
 #include "MIDIController.h"
 
-void MIDIController::initMIDIController() {
+MIDIController::MIDIController() {
   MIDI_CREATE_DEFAULT_INSTANCE();
   MIDI.setHandleNoteOn(handleNoteOn);    // Put only the name of the function
   MIDI.setHandleNoteOff(handleNoteOff);  // Put only the name of the function

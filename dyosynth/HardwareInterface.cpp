@@ -4,9 +4,9 @@
  */
 
 #include "HardwareInterface.h"
+#include "utils.h"
 
-
-void HardwareInterface::initHardwareInterface() {
+HardwareInterface::HardwareInterface() {
   // Buttons config
   _connectButton(GENERIC_BUTTON_1, GENERIC_BUTTON_1_PIN);
   _connectButton(GENERIC_BUTTON_2, GENERIC_BUTTON_2_PIN);
@@ -47,6 +47,7 @@ bool HardwareInterface::isPressed(uint8_t button_id) {
   bool current_value = digitalRead(_button[button_id].pin);
   bool prev_value = _button[button_id].state;
   _button[button_id].state = current_value;
+  debug("Button " + String(button_id) + " was pressed");
 
   // using internal pullup pressed button goes LOW
   return current_value != prev_value && current_value == LOW;
@@ -90,6 +91,7 @@ uint16_t HardwareInterface::getPotValue(uint8_t pot_id) {
     if ( _pot[pot_id].lock) {
       _pot[pot_id].lock = false;
     }
+    debug("The value of " + String(pot_id) + " is: " + String(current_value));
     return current_value;    
   } 
   return -1;  

@@ -11,29 +11,36 @@
 #include "DisplayLedInterface.h"
 #include "MIDIController.h"
 #include "PageController.h"
+#include "utils.h"
 #include <MozziGuts.h>
 #include <mozzi_midi.h>
 #include <Oscil.h>
 #include <ADSR.h>
 
-HardwareInterface hardwareInterface = HardwareInterface();
-DisplayLedInterface displayInterface = DisplayLedInterface();
-MIDIController midiController = MIDIController();
-PageController pageController = PageController();
-Preset current_preset = Preset();
+HardwareInterface hardwareInterface;
+DisplayLedInterface displayInterface;
+MIDIController midiController;
+PageController pageController;
+Preset current_preset;
 Page current_page;
 
 void setup() {  
+  // for debugging purposes only
+  Serial.begin(9600);
+
   // init LED display interface
-  displayInterface.initDisplayLedInterface();
+  displayInterface = DisplayLedInterface();
   // init MIDI interface
-  midiController.initMIDIController();
+  midiController = MIDIController();
   // init User Interface, aka Switches (Buttons) and Pots
-  hardwareInterface.initHardwareInterface();
+  hardwareInterface = HardwareInterface();  
 
   // load default preset
+  current_preset = Preset();
   current_preset.loadPreset(BASIC_SAW_MONO);
+  debug("Default preset values:\n\n" + current_preset.toString());
   // on startup always load Live Page as the current_page
+  pageController = PageController();
   current_page = pageController.getPage(PAGE_FILTER);  
 }
 
@@ -42,5 +49,6 @@ void loop() {
     current_page = pageController.getNextPage(current_page);    
   }
   pageController.processPageChanges(current_page, hardwareInterface);
-
+  delay(10);
+  debug("New preset values:\n\n" + current_preset.toString());
 }
