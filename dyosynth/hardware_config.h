@@ -10,7 +10,7 @@
 
 // Hardware config
 #define ADC_RESOLUTION        1024
-#define POT_SENSITIVITY       2
+#define POT_SENSITIVITY       5
 // minimum _movement_ of pot (1/8 of total ADC range) to get pot unlocked
 #define MIN_POT_CHANGE        ADC_RESOLUTION / 8
 
@@ -43,6 +43,14 @@ typedef enum {
   GENERIC_POT_5  
 } POT_HARDWARE_INTERFACE;
 
+static POT_HARDWARE_INTERFACE POT_IDS[] = {
+  GENERIC_POT_1,
+  GENERIC_POT_2,
+  GENERIC_POT_3,
+  GENERIC_POT_4,
+  GENERIC_POT_5
+  };
+
 typedef enum {
   GENERIC_BUTTON_1,
   GENERIC_BUTTON_2,
@@ -50,5 +58,13 @@ typedef enum {
   GENERIC_BUTTON_4,
   GENERIC_BUTTON_5  
 } BUTTON_HARDWARE_INTERFACE;
+
+static BUTTON_HARDWARE_INTERFACE BUTTON_IDS[] = {
+  GENERIC_BUTTON_1,
+  GENERIC_BUTTON_2,
+  GENERIC_BUTTON_3,
+  GENERIC_BUTTON_4,
+  GENERIC_BUTTON_5  
+  };
 
 #endif

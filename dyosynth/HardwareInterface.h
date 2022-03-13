@@ -6,35 +6,54 @@
  */
 
 #include <Arduino.h>
+#include <MozziGuts.h>
 #include "hardware_config.h"
 
 // hardware-oriented pot data
-struct HARDWARE_POT {
-  uint8_t pin;
-  int state;
-  bool lock = true;
+class HardwarePot {
+  private:
+    uint8_t id;
+    uint8_t pin;
+    int value;
+    bool lock;
+
+    uint16_t _analogRead();
+
+  public:
+    HardwarePot();
+    HardwarePot(uint8_t id, uint8_t pin);
+    uint8_t getId();
+    uint8_t getPin();
+    int getValue();    
+    void setValue(int state);    
+    void setLockState(bool lock);
+    bool isLocked();        
 };
 
 // hardware-oriented button data
-struct HARDWARE_BUTTON {
-  uint8_t pin;
-  bool state = LOW;
+class HardwareButton {
+  private:
+    uint8_t id;
+    uint8_t pin;
+        
+  public:
+    HardwareButton();
+    HardwareButton(uint8_t id, uint8_t pin);
+    uint8_t getPin();        
+    bool isPressed();
 };
 
 class HardwareInterface {
   private:
-    HARDWARE_POT _pot[NUM_OF_POTS];
-    HARDWARE_BUTTON _button[NUM_OF_BUTTONS];
-
-    void _connectPot(uint8_t pot_id, uint8_t pot_pin);
-    void _connectButton(uint8_t button_id, uint8_t button_pin);
-    uint16_t _analogRead(uint8_t pot_id);
+    HardwarePot* _pots[NUM_OF_POTS];
+    HardwareButton* _buttons[NUM_OF_BUTTONS];
+    
 
   public:
-    HardwareInterface();
-    void lockPotsState(bool lock);
-    bool isPressed(uint8_t button_id);
+    HardwareInterface();    
+    void lockPotsState(bool lock);    
     bool isDoublePressed(uint8_t button1_id, uint8_t button2_id);
-    uint16_t getPotValue(uint8_t pot_id);
+    HardwarePot* getPot(POT_HARDWARE_INTERFACE pot_id);
+    HardwareButton* getButton(BUTTON_HARDWARE_INTERFACE button_id);    
 };
 #endif
